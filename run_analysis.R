@@ -1,3 +1,5 @@
+run_analysis <- function()
+{
 xtest <- read.table("test/X_test.txt", header=FALSE, sep="")
 ytest <- read.table("test/y_test.txt", header=FALSE, sep="")
 
@@ -29,3 +31,5 @@ df5$activity[df5$activity=="6"] <- "LAYING"
 df6 <- aggregate(df5[,3:81], list(df5$subject, df5$activity), mean)
 names(df6)[1] <- "subject"
 names(df6)[2] <- "activity"
+write.table(df6, "project.txt", row.name=FALSE)
+}
